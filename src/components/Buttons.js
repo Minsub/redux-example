@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { getRandomColor } from '../utils'
 
 import './Buttons.css';
 
 const Buttons = ({onCreate, onRemove}) => {
     return (
         <div className="Buttons">
-            <div className="btn add" onClick={onCreate}>
+            <div className="btn add" onClick={() => onCreate(getRandomColor())}>
                 생성
             </div>
             <div className="btn remove" onClick={onRemove}>

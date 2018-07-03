@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { bindActionCreators } from 'redux';
 import Buttons from '../components/Buttons';
 import CounterListContainer from './CounterListContainer';
 
@@ -30,4 +31,11 @@ const mapToDispatch = (dispatch) => ({
 });
 
 // 리덕스에 연결을 시키고 내보낸다
-export default connect(null, mapToDispatch)(App);
+export default connect(
+  null,
+  (dispatch) => bindActionCreators({
+    onCreate: actions.create,
+    onRemove: actions.remove
+  }, dispatch)
+  // mapToDispatch
+)(App);
