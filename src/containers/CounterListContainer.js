@@ -1,12 +1,12 @@
 import CounterList from '../components/CounterList';
 // import * as actions from '../actions';
-import * as actions from '../modules';
+import * as counterActions from '../modules/counter';
 import { connect } from 'react-redux';
 import { getRandomColor } from '../utils';
 
 // store 안의 state 값을 props 로 연결해줍니다.
 const mapStateToProps = (state) => ({
-    counters: state.get('counters')
+    counters: state.counter.get('counters')
 });
 
 /* 
@@ -15,13 +15,13 @@ const mapStateToProps = (state) => ({
 */
 
 const mapDispatchToProps = (dispatch) => ({
-    // onIncrement: (index) => dispatch(actions.increment(index)),
-    // onDecrement: (index) => dispatch(actions.decrement(index)),
-    onIncrement: (index) => dispatch(actions.incrementAsync(index)),
-    onDecrement: (index) => dispatch(actions.decrementAsync(index)),
+    onIncrement: (index) => dispatch(counterActions.increment(index)),
+    onDecrement: (index) => dispatch(counterActions.decrement(index)),
+    // onIncrement: (index) => dispatch(counterActions.incrementAsync(index)),
+    // onDecrement: (index) => dispatch(counterActions.decrementAsync(index)),
     onSetColor: (index) => {
         const color = getRandomColor();
-        dispatch(actions.setColor({ index, color}));
+        dispatch(counterActions.setColor({ index, color}));
     }
 })
 
